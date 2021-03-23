@@ -1,0 +1,50 @@
+Plant Code,Generator ID,Technology,Capacity MW,Operating Year,Status
+2545,1,Conventional Hydroelectric,9,1932,OP
+2545,2,Conventional Hydroelectric,9,1932,OP
+2545,3,Conventional Hydroelectric,9,1966,OP
+2545,4,Conventional Hydroelectric,9,1966,OP
+2566,1,Conventional Hydroelectric,0.8,1924,OP
+2566,2,Conventional Hydroelectric,0.5,1928,OP
+2569,1,Conventional Hydroelectric,5,1983,OP
+2569,2,Conventional Hydroelectric,5,1983,OP
+2574,1,Conventional Hydroelectric,2.8,1928,OP
+2574,2,Conventional Hydroelectric,2.8,1928,OP
+2574,3,Conventional Hydroelectric,2.8,1928,OP
+2574,4,Conventional Hydroelectric,3.5,1949,OP
+2582,1,Conventional Hydroelectric,4,1930,OP
+2582,2,Conventional Hydroelectric,4,1930,OP
+2586,1,Conventional Hydroelectric,2,1915,OP
+2586,2,Conventional Hydroelectric,2,1915,OP
+2586,3,Conventional Hydroelectric,2,1915,OP
+2586,4,Conventional Hydroelectric,2,1915,OP
+2586,5,Conventional Hydroelectric,2,1915,OP
+2589,1,Nuclear,641.8,1969,OP
+2589,2,Nuclear,1259.3,1987,OP
+2594,ST5,Petroleum Liquids,901.8,1975,OP
+2594,ST6,Petroleum Liquids,901.8,1979,OP
+2595,1,Conventional Hydroelectric,2,1914,OP
+2595,2,Conventional Hydroelectric,2,1914,OP
+2595,3,Conventional Hydroelectric,2,1914,OP
+2596,4,Conventional Hydroelectric,1,1914,OP
+2596,5,Conventional Hydroelectric,1,1914,OP
+2596,6,Conventional Hydroelectric,0.5,2008,OP
+2596,7,Conventional Hydroelectric,0.5,2008,OP
+2621,2,Conventional Hydroelectric,2,1926,OP
+2621,3,Conventional Hydroelectric,2,1926,OP
+2621,4,Conventional Hydroelectric,2,1926,OP
+2621,5,Conventional Hydroelectric,2,1926,OP
+6110,1,Nuclear,883.3,1976,OP
+50450,GEN1,Natural Gas Fired Combined Cycle,41.2,1990,OP
+50450,GEN2,Natural Gas Fired Combined Cycle,16.2,1990,OP
+50907,UNT1,Municipal Solid Waste,1.8,1986,OP
+50907,UNT2,Municipal Solid Waste,1.8,1986,OP
+54547,1,Natural Gas Fired Combined Cycle,169.2,1994,OP
+54547,2,Natural Gas Fired Combined Cycle,169.2,1994,OP
+54547,3,Natural Gas Fired Combined Cycle,169.2,1994,OP
+54547,4,Natural Gas Fired Combined Cycle,169.5,1994,OP
+54547,5,Natural Gas Fired Combined Cycle,204.5,1994,OP
+54547,6,Natural Gas Fired Combined Cycle,204.5,1994,OP
+54865,1-02,Conventional Hydroelectric,1.6,1991,OP
+54865,2-01,Conventional Hydroelectric,1.6,1991,OP
+60462,PV1,Solar Photovoltaic,2,2017,OP
+60818,PV1,Solar Photovoltaic,2,2018,OP

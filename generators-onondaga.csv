@@ -1,0 +1,12 @@
+Plant Code,Generator ID,Technology,Capacity MW,Operating Year,Status
+10621,GEN1,Natural Gas Fired Combined Cycle,65.5,1994,OP
+10621,GEN2,Natural Gas Fired Combined Cycle,37.2,1994,OP
+50662,GEN1,Municipal Solid Waste,39.5,1994,OP
+50978,GEN1,Natural Gas Fired Combined Cycle,48.8,1993,OP
+50978,GEN2,Natural Gas Fired Combined Cycle,48.8,1993,OP
+50978,GEN3,Natural Gas Fired Combined Cycle,25,1993,OP
+60097,PV1,Solar Photovoltaic,1,2016,OP
+60098,PV1,Solar Photovoltaic,2,2017,OP
+60232,PV1,Solar Photovoltaic,2,2018,OP
+61575,BAL01,Solar Photovoltaic,2,2018,OP
+61739,SYR1,Batteries,1,2017,OP
