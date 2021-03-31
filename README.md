@@ -69,7 +69,7 @@ Please note that some instructions for common operations are brief because they'
 
 1. Set `by_co` to the result of grouping `dat` by `"state"` and `"county"`. (FAQ5)
 
-1. Compute the county's total population for each group by setting `bg_co_tot` to the result of calling `.sum()` on `bg_co`.
+1. Compute the county's total population for each group by setting `by_co_tot` to the result of calling `.sum()` on `by_co`.
 
 1. Keep a list of the racial groups in the data by setting `races` equal to the columns of `by_co_tot`. It will be handy later in the script.
 
