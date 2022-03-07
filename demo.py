@@ -3,9 +3,9 @@
 #
 #  Demonstrate appending, joining, and selecting data
 #
-  
+
 import pandas as pd
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 
 #%%
 #
@@ -19,21 +19,21 @@ gen_oswego['county'] ='Oswego'
 gen_onondaga = pd.read_csv('generators-onondaga.csv')
 gen_onondaga['county'] ='Onondaga'
 
-gen_all = gen_oswego.append( gen_onondaga )
+gen_all = pd.concat( [gen_oswego, gen_onondaga] )
 
 #%%
 #
 #  Read a file of plant information for several counties
 #
- 
+
 plants = pd.read_csv('plants.csv')
 
 #
 #  Use a left m:1 join to add the plant information to the generators
 #
 
-both = gen_all.merge(plants, 
-                     on='Plant Code', 
+both = gen_all.merge(plants,
+                     on='Plant Code',
                      how='left',
                      validate='m:1',
                      indicator=True)
@@ -44,7 +44,7 @@ both = gen_all.merge(plants,
 #
 
 print( both['_merge'].value_counts() )
-both = both.drop('_merge', axis='columns')
+both = both.drop(columns='_merge')
 
 #
 #  Set the index for good measure. Do it after the merge because merging
@@ -79,10 +79,10 @@ print( newish )
 
 #%%
 #
-#  Group data and construct selected aggregates 
+#  Group data and construct selected aggregates
 #
 
-tech_by_kv = both.groupby(['Technology','Grid kV'])
+tech_by_kv = both.groupby(['Grid kV','Technology'])
 
 summary = pd.DataFrame()
 summary['units'] = tech_by_kv.size()
@@ -92,11 +92,14 @@ print( summary )
 
 #%%
 #
-#  Draw a bar graph. Flip the sort order so that alphabetical order
-#  runs down instead of up.
+#  Draw a bar graph. Flip the sort order so that the smallest voltages are
+#  at the top and the largest are at the bottom. Looks best because the
+#  bottom bars are much longer than the top ones.
 #
 
 summary = summary.sort_index(ascending=False)
 
-fig, ax1 = plt.subplots(dpi=300)
-summary.plot.barh(y='mw',ax=ax1)
+fig1, ax1 = plt.subplots(dpi=300)
+fig1.suptitle('Electric Power Plants in Onondaga and Oswego')
+summary.plot.barh(y='mw',ax=ax1,legend=None)
+ax1.set_xlabel('MW')

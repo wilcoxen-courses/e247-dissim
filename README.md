@@ -1,27 +1,26 @@
 # Exercise: Computing County Dissimilarity Indexes
 
-### Summary
+## Summary
 
 This exercise uses Census data at the block group level to compute a measure of racial segregation known as a dissimilarity index for large counties in the US.
 
-### Input Data
+## Input Data
 
-The main input data is a file called **bg_by_state.zip** that will need to be downloaded from the course Google Drive folder. It *does not* need to be unzipped: you'll read the data from it directly using Pandas.
+There are two input files that will need to be downloaded from the course Google Drive folder: **bg_by_state.zip** and **county_names.csv**. Please note that `bg_by_state.zip` should not be unzipped: you'll read it directly using Pandas. 
 
-The zip file contains 52 individual CSV files of block group data: one for each state plus the District of Columbia and Puerto Rico. The files have names like "bg36.csv", where the digits indicate the FIPS code of the state. Each of the files has six columns: "B02001_001E", "B02001_002E", "state", "county", "tract", and "block group". The first two are the total population of the block group ("B02001_001E") and the population of people in the block group who identify as white alone ("B02001_002E"). The remaining columns are all components of the FIPS code identifying the block group. If you'd like to see what the files look like without unpacking the zip archive, the New York file **bg36.csv** is included in the repository.
+The first file, `bg_by_state.zip`, contains 52 individual CSV files of block group data: one for each state plus the District of Columbia and Puerto Rico. The files have names like "bg36.csv", where the digits indicate the FIPS code of the state. Each of the files has six columns: "B02001_001E", "B02001_002E", "state", "county", "tract", and "block group". The first two are the total population of the block group ("B02001_001E") and the population of people in the block group who identify as white alone ("B02001_002E"). The remaining columns are all components of the FIPS code identifying the block group. If you'd like to see what the files look like without unpacking the zip archive, you can download the New York file, **bg36.csv**, from the Google Drive folder.
 
-There is also a second input file, **county_names.csv**, that contains the names of US counties. It has three columns: "state", "county", and "NAME". The first two are FIPS codes.
+The second file, `county_names.csv`, contains the names of US counties. It has three columns: "state", "county", and "NAME". The first two are FIPS codes.
 
-
-### Deliverables
+## Deliverables
 
 The deliverables for the assignment are two scripts, **append.py** and **dissim.py**. They produce two output files, "append.csv" and "dissim.csv", and one figure, "pop_by_bin.png".
 
-### Instructions
+## Instructions
 
 Please note that some instructions for common operations are brief because they're probably becoming pretty familiar. However, they often have additional text in an FAQ section at the bottom in case it's useful.
 
-**A. Script append.py**
+### A. Script append.py
 
 1. Import `pandas` and `zipfile`.
 
@@ -39,7 +38,7 @@ Please note that some instructions for common operations are brief because they'
 
     1. Create dataframe `cur` by calling `pd.read_csv()` with arguments `fh` and `dtype=fips`.
 
-    1. Append the new data to `combined` by setting `combined` equal to the result of calling the `.append()` method on `combined` with argument `cur`.
+    1. Append the new data to `combined` by setting `combined` equal to the result of calling `pd.concat()` on the list `[combined,cur]`. That will add `csv` to the end of `combined` and return the result.
 
     1. Add 1 to `n_files`
 
@@ -57,7 +56,7 @@ Please note that some instructions for common operations are brief because they'
 
 1. Save the result to `"append.csv"` by calling the `.to_csv()` method on `combined` with the argument `"append.csv"` and `index=False`. The `index` keyword omits the index from the output file. That's useful in this context because here the index is just the row number and we don't need to retain it.
 
-**B. Script dissim.py**
+### B. Script dissim.py
 
 1. Import `pandas` and `matplotlib.pyplot`.
 
@@ -101,7 +100,7 @@ Please note that some instructions for common operations are brief because they'
 
 1. Now join the names onto the data by setting `res` equal to the result of calling `.merge()` on `large_co_results` using the following arguments: `names`, `on=["state", "county"]`, `how="left"`, `validate="1:1"`, and `indicator=True`. It's a left join because we want to keep all of the records in `large_co_results` and don't want to include any of the records that are in `names` but not in `large_co_results`, since those are for small counties.
 
-1. Print the value counts for the `"_merge"` column of `res` and then drop it from the dataframe. (FAQ6)
+1. Print the value counts for the `"_merge"` column of `res` and then drop it from the dataframe. (FAQ6, FAQ2)
 
 1. Sort `res` by `"dissim"`.
 
@@ -123,27 +122,27 @@ Please note that some instructions for common operations are brief because they'
 
 1. Print `pct_by_bin`.
 
-1. Begin a new figure by setting `fig, ax1` to the result of calling `plt.subplots()`.
+1. Begin a new figure by setting `fig1, ax1` to the result of calling `plt.subplots()` with the usual `dpi=300` argument.
 
 1. Set `bars` to a list consisting of `"white"` and `"nonwhite"`. It will define the columns in a bar graph below.
 
 1. Call `.plot.bar()` on `pct_by_bin[bars]` using the argument `ax=ax1`.
 
-1. Set the figure title by calling `.suptitle()` on `fig` with the argument `"Degree of Segregation in Large US Counties"`.
+1. Set the figure title by calling `.suptitle()` on `fig1` with the argument `"Degree of Segregation in Large US Counties"`.
 
 1. Set the X axis label by calling `.set_xlabel()` on `ax1` with the argument `"Dissimilarity Index"`.
 
 1. Set the Y axis label by calling `.set_ylabel()` on `ax1` with the argument `"Percent of Overall Population"`.
 
-1. Adjust the figure's spacing by calling `.tight_layout()` on `fig`. This adjusts the spacing in the plot to make sure that everything fits and doesn't overlap.
+1. Adjust the figure's spacing by calling `.tight_layout()` on `fig1`. This adjusts the spacing in the plot to make sure that everything fits and doesn't overlap.
 
-1. Save the figure by calling `.savefig()` on `fig` with arguments `"pop_by_bin.png"` and `dpi=300`.
+1. Save the figure by calling `.savefig()` on `fig1` with arguments `"pop_by_bin.png"`.
 
-### Submitting
+## Submitting
 
 Once you're happy with everything and have committed all of the changes to your local repository, please push the changes to GitHub. At that point, you're done: you have submitted your answer.
 
-### FAQ
+## FAQ
 
 1. *How do I set data types for specific columns in* `pd.read_csv()`*?*
 
@@ -151,11 +150,11 @@ Once you're happy with everything and have committed all of the changes to your 
 
 2. *How do I drop one or more columns from a dataframe?*
 
-    To drop a single column `"C"` from dataframe `D` use `D = D.drop("C", axis="columns")`. To drop several columns, use a list: `D = D.drop(["E","F"], axis="columns")`.
+    To drop a single column `"C"` from dataframe `D` use `D = D.drop(columns="C")`. To drop several columns, use a list: `D = D.drop(columns=["E","F"])`.
 
 3. *How do I use a dictionary to rename columns in a dataframe?*
 
-    To use dictionary M to rename columns in dataframe D, use `D = D.rename(M, axis="columns")`. The keys in the dictionary should be existing column names and the values should be the corresponding new names.
+    To use dictionary M to rename columns in dataframe D, use `D = D.rename(columns=M)`. The keys in the dictionary should be existing column names and the values should be the corresponding new names.
 
 4. *How do I set the index of a dataframe to one or more variables?*
 
