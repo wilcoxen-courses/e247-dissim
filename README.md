@@ -14,7 +14,7 @@ The second file, `county_names.csv`, contains the names of US counties. It has t
 
 ## Deliverables
 
-The deliverables for the assignment are two scripts, **append.py** and **dissim.py**. They produce two output files, "append.csv" and "dissim.csv", and one figure, "pop_by_bin.png".
+The deliverables for the assignment are two scripts, **append.py** and **dissim.py**. They produce two output files, "append.csv" and "dissim.csv", and one figure, "pop_by_bin.png". Note that the CSV files are not deliverables and will not be uploaded to GitHub: they will be rebuilt when your script is run.
 
 ## Instructions
 
