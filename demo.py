@@ -6,17 +6,31 @@
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import zipfile
+
+plt.rcParams['figure.dpi'] = 300
 
 #%%
 #
-#  Read two files of data on generators and then append them. Create
-#  a county variable to track source.
+#  Open the zip archive and list its contents
 #
 
-gen_oswego   = pd.read_csv('generators-oswego.csv')
+archive = zipfile.ZipFile('generators.zip')
+print( archive.namelist() )
+
+
+#%%
+#
+#  Read two files of data on generators and then append them. Along 
+#  the way, create a county variable to track the source.
+#
+
+fh1 = archive.open('generators-oswego.csv')
+gen_oswego = pd.read_csv(fh1) 
 gen_oswego['county'] ='Oswego'
 
-gen_onondaga = pd.read_csv('generators-onondaga.csv')
+fh2 = archive.open('generators-onondaga.csv')
+gen_onondaga = pd.read_csv(fh2)
 gen_onondaga['county'] ='Onondaga'
 
 gen_all = pd.concat( [gen_oswego, gen_onondaga] )
@@ -26,8 +40,10 @@ gen_all = pd.concat( [gen_oswego, gen_onondaga] )
 #  Read a file of plant information for several counties
 #
 
-plants = pd.read_csv('plants.csv')
+fh3 = archive.open('plants.csv')
+plants = pd.read_csv(fh3)
 
+#%%
 #
 #  Use a left m:1 join to add the plant information to the generators
 #
@@ -61,6 +77,7 @@ both = both.set_index(['Plant Code','Generator ID'])
 plant_2589 = both.xs(2589,level='Plant Code')
 print( plant_2589 )
 
+#%%
 #
 #  Select records for a technology using .query()
 #
@@ -68,6 +85,7 @@ print( plant_2589 )
 ngcc = both.query("Technology == 'Natural Gas Fired Combined Cycle'")
 print( ngcc )
 
+#%%
 #
 #  Select records based on a boolean series
 #
@@ -99,7 +117,10 @@ print( summary )
 
 summary = summary.sort_index(ascending=False)
 
-fig1, ax1 = plt.subplots(dpi=300)
+fig1, ax1 = plt.subplots()
 fig1.suptitle('Electric Power Plants in Onondaga and Oswego')
 summary.plot.barh(y='mw',ax=ax1,legend=None)
 ax1.set_xlabel('MW')
+fig1.savefig('fig1-no-tight-layout.png')
+fig1.tight_layout()
+fig1.savefig('fig2-tight-layout.png')

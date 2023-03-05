@@ -35,3 +35,5 @@ makefile
 
 append.csv
 dissim.csv
+
+!generators.zip
