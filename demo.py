@@ -21,12 +21,12 @@ print( archive.namelist() )
 
 #%%
 #
-#  Read two files of data on generators and then append them. Along 
+#  Read two files of data on generators and then append them. Along
 #  the way, create a county variable to track the source.
 #
 
 fh1 = archive.open('generators-oswego.csv')
-gen_oswego = pd.read_csv(fh1) 
+gen_oswego = pd.read_csv(fh1)
 gen_oswego['county'] ='Oswego'
 
 fh2 = archive.open('generators-onondaga.csv')
