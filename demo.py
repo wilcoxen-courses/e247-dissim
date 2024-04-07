@@ -48,9 +48,7 @@ plants = pd.read_csv(fh3)
 #  Use a left m:1 join to add the plant information to the generators
 #
 
-both = gen_all.merge(plants,
-                     on='Plant Code',
-                     how='left',
+both = gen_all.merge(plants, how='left', on='Plant Code',
                      validate='m:1',
                      indicator=True)
 
