@@ -130,21 +130,21 @@ Please note that some instructions for common operations are brief because they'
 
 1. Print an informative heading and then print `pct_by_bin`.
 
-1. Begin a new figure by setting `fig1, ax1` to the result of calling `plt.subplots()`.
+1. Begin a new figure by setting `fig, ax` to the result of calling `plt.subplots()`.
 
 1. Set `bars` to a list consisting of `"white"` and `"poc"`. It will define the columns in a bar graph below.
 
-1. Call `.plot.bar()` on `pct_by_bin[bars]` using the argument `ax=ax1`.
+1. Call `.plot.bar()` on `pct_by_bin[bars]` using the argument `ax=ax`.
 
-1. Set the figure title by calling `.suptitle()` on `fig1` with the argument `"Degree of Segregation in Large US Counties"`.
+1. Set the figure title by calling `.suptitle()` on `fig` with the argument `"Degree of Segregation in Large US Counties"`.
 
-1. Set the X axis label by calling `.set_xlabel()` on `ax1` with the argument `"Dissimilarity Index"`.
+1. Set the X axis label by calling `.set_xlabel()` on `ax` with the argument `"Dissimilarity Index"`.
 
-1. Set the Y axis label by calling `.set_ylabel()` on `ax1` with the argument `"Percent of Overall Population"`.
+1. Set the Y axis label by calling `.set_ylabel()` on `ax` with the argument `"Percent of Overall Population"`.
 
-1. Adjust the figure's spacing by calling `.tight_layout()` on `fig1`.
+1. Adjust the figure's spacing by calling `.tight_layout()` on `fig`.
 
-1. Save the figure by calling `.savefig()` on `fig1` with arguments `"pop_by_bin.png"`.
+1. Save the figure by calling `.savefig()` on `fig` with arguments `"pop_by_bin.png"`.
 
 ## Submitting
 
